@@ -20,10 +20,10 @@ public class BankAccountTest {
     }
 
     @Test
-    public void testWithdraw(){
+    public void testWithdraw() throws InsufficientFoundsException {
         int amount = 1000;
         int balance = bankTest.getBalance();
-        assertThrows(ArithmeticException.class,()-> bankTest.withdraw(100000));
+        assertThrows(InsufficientFoundsException.class,()-> bankTest.withdraw(100000));
         bankTest.withdraw(amount);
         assertEquals(balance - amount, bankTest.getBalance());
     }

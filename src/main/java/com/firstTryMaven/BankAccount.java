@@ -9,9 +9,9 @@ public class BankAccount {
     public void setBalance(int money){
         this.balance = balance + money;
     }
-    public void withdraw(int amount) throws ArithmeticException {
+    public void withdraw(int amount) throws InsufficientFoundsException {
         if (balance < amount) {
-            throw new ArithmeticException("Insufficient founds for a withdraw");
+            throw new InsufficientFoundsException("Insufficient founds for a withdraw");
         }else{
             setBalance(-amount);
         }
