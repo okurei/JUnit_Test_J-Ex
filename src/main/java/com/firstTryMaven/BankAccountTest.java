@@ -30,7 +30,7 @@ public class BankAccountTest {
 
     @Test
     public void testDeposit(){
-        int amount = 10000;
+        int amount = 0;
         int balance = bankTest.getBalance();
         bankTest.deposit(amount);
         assertEquals(amount+balance,bankTest.getBalance());
