@@ -5,17 +5,34 @@ import static org.junit.Assert.*;
 
 
 public class BankAccountTest {
-    BankAccount test = new BankAccount();
+    BankAccount bankTest = new BankAccount();
 
     @Test
     public void testSetBalance(){
         int amount = 1000;
-        int balance = test.getBalance();
-        test.setBalance(amount);
-        assertEquals(test.getBalance(), balance + amount );
+        int balance = bankTest.getBalance();
+        bankTest.setBalance(amount);
+        assertEquals(balance + amount, bankTest.getBalance() );
         amount = -1000;
-        balance= test.getBalance();
-        test.setBalance(amount);
-        assertEquals(test.getBalance(), amount+balance);
+        balance= bankTest.getBalance();
+        bankTest.setBalance(amount);
+        assertEquals(balance + amount, bankTest.getBalance());
+    }
+
+    @Test
+    public void testWithdraw(){
+        int amount = 1000;
+        int balance = bankTest.getBalance();
+        assertThrows(ArithmeticException.class,()-> bankTest.withdraw(100000));
+        bankTest.withdraw(amount);
+        assertEquals(balance - amount, bankTest.getBalance());
+    }
+
+    @Test
+    public void testDeposit(){
+        int amount = 10000;
+        int balance = bankTest.getBalance();
+        bankTest.deposit(amount);
+        assertEquals(amount+balance,bankTest.getBalance());
     }
 }
